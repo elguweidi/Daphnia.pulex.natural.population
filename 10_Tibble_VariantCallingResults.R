@@ -1,5 +1,5 @@
 # This R code was used to tabulate the variance calling results from the vcf files.
-#=========================================================================#
+#=================================================================================#
 library(tidyverse)
 #=========================================================================#
 # This step is to read the names and the number of all files to be analyzed 
@@ -63,7 +63,7 @@ write_csv(NewNames, file= "SamplesOldNewNames.csv")
 LoopOutPutStore = merge(LoopOutPutStore,NewNames, by = 'sample')
 LoopOutPutStore$sample = LoopOutPutStore$NewNames
 LoopOutPutStore = subset(LoopOutPutStore, select = -NewNames )
-
+#=====================================================================================#
 write_csv(LoopOutPutStore, file= "Combined_VC.csv")
 #=====================================================================================#
 

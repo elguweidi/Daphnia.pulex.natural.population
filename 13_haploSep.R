@@ -3,8 +3,10 @@
 library(devtools)
 library(tidyverse)
 library(haploSep)
+library(adegenet)
+library(polysat)
 # Read prunned data
-pruData <- read_csv("../6.DataPruning/PrunedData.csv")
+pruData <- read_csv("PrunedData.csv")
 a1 <- select(pruData, contains(".1"))
 m.new = floor(log2(ncol(a1)))
 m.new
@@ -75,8 +77,6 @@ df.popgen2.count <- polysat::freq.to.genpop(df.popgen2.row)
 # Save data
 save(df.popgen2.count, file=paste0("df.popgen2.count.Rda"))
 #----------------------------------------------------------------------#
-library(adegenet)
-library(polysat)
 # Run genpop
 df.genpop2 <-adegenet::genpop(df.popgen2.count, ploidy = '1', type = "codom")
 save(df.genpop2, file = paste0("df.genpop2.Rda"))

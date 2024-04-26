@@ -1,4 +1,4 @@
-# This R code was used to plot the neighbor-joining tree.
+# This R code was used to plot a neighbor-joining tree.
 #==========================================================================#
 library(tidyverse)
 library(adegenet)

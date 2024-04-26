@@ -2,37 +2,37 @@
 #========================================================================#
 library(tidyverse)
 library("stringr")
-abir.data <- read.csv ('AllFilesCombinedCorrectClean.csv')
+dataF <- read.csv ('AllFilesCombinedCorrectClean.csv')
 
 # Get allele fregs
-abir.data$a1_freq = abir.data$a1_count/(abir.data$a1_count+abir.data$a2_count+abir.data$a3_count+abir.data$a4_count)
-abir.data$a2_freq = abir.data$a2_count/(abir.data$a1_count+abir.data$a2_count+abir.data$a3_count+abir.data$a4_count)
-abir.data$a3_freq = abir.data$a3_count/(abir.data$a1_count+abir.data$a2_count+abir.data$a3_count+abir.data$a4_count)
-abir.data$a4_freq = abir.data$a4_count/(abir.data$a1_count+abir.data$a2_count+abir.data$a3_count+abir.data$a4_count)
+dataF$a1_freq = dataF$a1_count/(dataF$a1_count+dataF$a2_count+dataF$a3_count+dataF$a4_count)
+dataF$a2_freq = dataF$a2_count/(dataF$a1_count+dataF$a2_count+dataF$a3_count+dataF$a4_count)
+dataF$a3_freq = dataF$a3_count/(dataF$a1_count+dataF$a2_count+dataF$a3_count+dataF$a4_count)
+dataF$a4_freq = dataF$a4_count/(dataF$a1_count+dataF$a2_count+dataF$a3_count+dataF$a4_count)
 
 # Check if allele freqs sum up to 1:
-sumFreqs = abir.data$a1_freq+abir.data$a2_freq+abir.data$a3_freq+abir.data$a4_freq
+sumFreqs = dataF$a1_freq+dataF$a2_freq+dataF$a3_freq+dataF$a4_freq
 max(sumFreqs); min(sumFreqs)
 
 # Subset the data to pivot it so we can do the data pruning
-abir.data = abir.data[,c("sample", "locus", "gene", "position", "a1_freq", "a2_freq", "a3_freq", "a4_freq")]
+dataF = dataF[,c("sample", "locus", "gene", "position", "a1_freq", "a2_freq", "a3_freq", "a4_freq")]
 
-abir.data.wide <- abir.data %>%
+dataF.wide <- dataF %>%
   select(sample, locus, a1_freq, a2_freq, a3_freq, a4_freq) %>%
   pivot_wider(names_from = locus,
               values_from = c(a1_freq, a2_freq, a3_freq, a4_freq), names_sep = "-")
 #-----------------------------------------------------------------------------#
-w1=select(abir.data.wide,contains("a1_freq"))
-w2=select(abir.data.wide,contains("a2_freq"))
-w3=select(abir.data.wide,contains("a3_freq"))
-w4=select(abir.data.wide,contains("a4_freq"))
+w1=select(dataF.wide,contains("a1_freq"))
+w2=select(dataF.wide,contains("a2_freq"))
+w3=select(dataF.wide,contains("a3_freq"))
+w4=select(dataF.wide,contains("a4_freq"))
 
 w1[is.na(w1)] <- 1
 w2[is.na(w2)] <- 0
 w3[is.na(w3)] <- 0
 w4[is.na(w4)] <- 0
 
-m=abir.data.wide[,1]
+m=dataF.wide[,1]
 mm1=data.frame("Sum");names(mm1) <- c("sample")
 mm2=data.frame("Mean");names(mm2) <- c("sample")
 

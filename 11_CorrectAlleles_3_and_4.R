@@ -1,4 +1,4 @@
-# This R code was used to correct third and fourth alleles if they are filliped. 
+# This R code was used to correct third and fourth alleles if they are flipped. 
 # Read data in
 dataIn <- read.csv(file ="Combined_VC.csv")
 

@@ -1,5 +1,5 @@
 # This R code was used to correct third and fourth alleles if they are flipped. 
-# Read data in
+# Read the csv file
 dataIn <- read.csv(file ="Combined_VC.csv")
 
 # Unique loci available in the data

@@ -12,7 +12,6 @@ min(dataIn);max(dataIn)
 dataIn[dataIn <0] = 0
 dataIn = sqrt(dataIn)
 min(dataIn);max(dataIn)
-dataIn[1:5,1:5]
 M <- matrix(NA, nrow(dataIn), ncol(dataIn))
 M[lower.tri(M)] <- dataIn[lower.tri(dataIn)]
 M[1:5,1:5]

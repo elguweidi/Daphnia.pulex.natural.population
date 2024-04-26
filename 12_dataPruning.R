@@ -1,5 +1,5 @@
 # This are code was used to clean and prune the variance calling data.
-#========================================================================#
+#=====================================================================#
 library(tidyverse)
 library("stringr")
 dataF <- read.csv ('AllFilesCombinedCorrectClean.csv')

@@ -5,7 +5,7 @@ library(tidyverse)
 library(haploSep)
 library(adegenet)
 library(polysat)
-# Read prunned data
+# Read the prunned data
 pruData <- read_csv("PrunedData.csv")
 a1 <- select(pruData, contains(".1"))
 m.new = floor(log2(ncol(a1)))

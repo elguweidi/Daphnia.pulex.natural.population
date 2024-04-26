@@ -48,7 +48,7 @@ IV. HaplotypeGenotypeT.csv
 V. hapFile.txt
 VI. df.genpop2HapTab.txt
 
-14. Plot neighbor-joining tree: 
+14. Plot a neighbor-joining tree: 
 The R code [14_Neighbor-Joining.R] was used to plot the neighbor-joining tree. The input file is [square-distance-matrix.txt] and the output file is [phylogram.png].
 
 References
